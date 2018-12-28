@@ -5,4 +5,7 @@
 	<select id="xtlist" resultType="java.util.Map">
 		select appro_name from dic_appro_type 
 	</select>
+	<select id="Dlxt" resultType="com.sp.model.Sys_users_set" parameterType="com.sp.model.Sys_users_set">
+		select * from sys_users_set where login_id=#{user} and pass_word = #{pas}
+	</select>
 </mapper>

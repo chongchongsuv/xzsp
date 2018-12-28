@@ -3,10 +3,13 @@ package com.sp.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.sp.model.Sys_users_set;
 import com.sp.service.Service;
 
 @Controller
@@ -28,6 +31,21 @@ public class SpHeadler {
 		map.put("xtlist",xtlist);
 		
 		return "view/addspname";
+	}
+	
+	/**
+	 * ÏµÍ³µÇÂ¼
+	 * @param user
+	 * @param pas
+	 * @param req
+	 */
+	@RequestMapping("dl")
+	public void Login(String user,String pas,HttpServletRequest req) {
+		Sys_users_set users = new Sys_users_set();
+		users.setLogin_id(user);
+		users.setPass_word(pas);
+		users = service.queryall(users);
+		req.getSession().setAttribute("sys_users_set", users);
 	}
 
 	
